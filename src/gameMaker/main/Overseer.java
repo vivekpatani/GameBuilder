@@ -1,11 +1,15 @@
 package gameMaker.main;
 
+import java.awt.LayoutManager;
+
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import gameMaker.util.Constants;
+import gameMaker.util.DropListener;
 
 public class Overseer implements Constants{
 
@@ -39,6 +43,8 @@ public class Overseer implements Constants{
 		
 		controlViewObj = new ControlView (this, controlPanel);
 		gameViewObj = new GameView (gamePanel);
+		
+		new DropListener(gamePanel);
 		
 		mainFrame.getContentPane().add(splitFrame);
 	}

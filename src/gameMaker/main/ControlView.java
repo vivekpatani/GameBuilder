@@ -1,12 +1,18 @@
 package gameMaker.main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import gameMaker.util.Constants;
+import gameMaker.util.DragListener;
 
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragSource;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
@@ -62,6 +68,24 @@ public class ControlView implements Constants {
 			}			
 		});
 		
+		try {
+			tempPic = ImageIO.read(new File ("resources/temp.jpg"));
+			picLabel = new JLabel(new ImageIcon(tempPic));
+			picLabel.setBounds(splitSize/3, gameTypeComboBox.getHeight()+ySpace, 100, 50);
+			
+		} 
+		catch (IOException e) {
+			log.error("Error : ", e);
+		}
+		
+		DragListener dragListener = new DragListener();
+		DragSource dragSource = new DragSource();
+		dragSource.createDefaultDragGestureRecognizer(picLabel, DnDConstants.ACTION_COPY, dragListener);
+		 // More can be added by making dragSource2 and adding object to it 
+		 
+		
+		controlPanel.add(picLabel);
+		
 		controlPanel.add(gameTypeComboBox);
 		gameTypeComboBox.setEnabled(true);
 		
@@ -75,7 +99,7 @@ public class ControlView implements Constants {
 		// Remove later
 		titleLabel = new JLabel();
 		titleLabel.setText("Breakout");
-		titleLabel.setBounds((windowWidth-splitSize)/2, ySpace, 100, 50);
+		titleLabel.setBounds((windowWidth-splitSize)/2, ySpace, ySpace*2, ySpace);
 		
 		componentList.add(titleLabel);
 		
