@@ -6,7 +6,6 @@ import javax.swing.*;
 import gameMaker.util.Constants;
 import gameMaker.util.DragListener;
 import gameMaker.view.AccordionUI;
-import gameMaker.view.SpritePanel;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -32,7 +31,7 @@ public class ControlView implements Constants {
 	
 	private Overseer overseerObj;
 	
-	private SpritePanel spritePanel;
+	// private SpritePanel spritePanel;
 	private AccordionUI accordionUI;
 	
 	private JSplitPane splitControlView;
@@ -51,8 +50,6 @@ public class ControlView implements Constants {
 	
 	public void init() {
 		
-		//controlPanel.setBorder(new TitledBorder("Choose a Layout for the game"));
-		
 		gameTypeComboBox = new JComboBox <String>(gameTypeList);
 		gameTypeComboBox.setSelectedIndex(0);
 		gameTypeComboBox.setBounds(gameTypeBounds);
@@ -64,15 +61,18 @@ public class ControlView implements Constants {
 				
 				if (gameTypeList[0].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Default value of ComboBox");
+					controlPanel.setBorder(new TitledBorder("Choose a Layout for the game"));
 					// To-do add a function call to disable accordionUI
 				}
 				else if (gameTypeList[1].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Breakout Game selected");
+					controlPanel.setBorder(new TitledBorder("Breakout Game"));
 					initBreakout();			
 					initBreakoutAccordion();
 				}
 				else if (gameTypeList[2].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Tetris selected");
+					controlPanel.setBorder(new TitledBorder("Tetris Game"));
 				}
 				else {
 					log.warn("Nothing selected");
@@ -107,9 +107,10 @@ public class ControlView implements Constants {
 	public void initBreakoutAccordion() {
 
 		accordionUI = new AccordionUI();
-		spritePanel = new SpritePanel();
+		
 		accordionUI.acordionMaker();
 		/*
+		spritePanel = new SpritePanel();
 		JPanel addedSpritePanel = new JPanel(new BorderLayout());
 		addedSpritePanel.add(new JLabel("Added Sprites"), BorderLayout.NORTH);
 		addedSpritePanel.add(new JScrollPane(), BorderLayout.CENTER);
