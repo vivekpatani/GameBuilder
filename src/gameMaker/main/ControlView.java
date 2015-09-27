@@ -68,23 +68,7 @@ public class ControlView implements Constants {
 			}			
 		});
 		
-		try {
-			tempPic = ImageIO.read(new File ("resources/temp.jpg"));
-			picLabel = new JLabel(new ImageIcon(tempPic));
-			picLabel.setBounds(splitSize/3, gameTypeComboBox.getHeight()+ySpace, 100, 50);
-			
-		} 
-		catch (IOException e) {
-			log.error("Error : ", e);
-		}
 		
-		DragListener dragListener = new DragListener();
-		DragSource dragSource = new DragSource();
-		dragSource.createDefaultDragGestureRecognizer(picLabel, DnDConstants.ACTION_COPY, dragListener);
-		 // More can be added by making dragSource2 and adding object to it 
-		 
-		
-		controlPanel.add(picLabel);
 		
 		controlPanel.add(gameTypeComboBox);
 		gameTypeComboBox.setEnabled(true);
