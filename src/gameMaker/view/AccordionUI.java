@@ -21,8 +21,6 @@ public class AccordionUI extends JPanel implements ActionListener {
 
 	private AccordionUI accordionUI;
 
-	private static final long serialVersionUID = -2760245005186933366L;
-
 	private JPanel topPanel = new JPanel(new GridLayout(2, 2));
 
 	private JPanel bottomPanel = new JPanel(new GridLayout(2, 2));

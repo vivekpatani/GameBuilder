@@ -9,13 +9,14 @@ import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
 
-import gameMaker.util.Constants;
+import gameMaker.main.ControlView;
 
 public class DropListener extends DropTargetAdapter implements Constants {
 
@@ -23,6 +24,7 @@ public class DropListener extends DropTargetAdapter implements Constants {
 	
 	private DropTarget dropTarget;
 	private JPanel panel;
+	
 	private JLabel transferLabel;
 	
 	public DropListener (JPanel panel) {
@@ -41,17 +43,17 @@ public class DropListener extends DropTargetAdapter implements Constants {
             if (event.isDataFlavorSupported(DataFlavor.imageFlavor)) {
                 ImageIcon transferImage = (ImageIcon) tr.getTransferData(DataFlavor.imageFlavor);
 
-                System.out.println("Image supported, adding to panel");
+                log.info("Image supported, adding to panel");
                 
                 if (transferImage != null) {
-                
+                	
                 	transferLabel = new JLabel(transferImage);
-                	transferLabel.setBounds((int) dropPoint.getX(), (int) dropPoint.getY(), ySpace*2, ySpace);
+                	transferLabel.setBounds((int) dropPoint.getX(), (int) dropPoint.getY(), splitSize, splitControlViewSize);
                     panel.add(transferLabel);
                     panel.revalidate();
                     panel.repaint();
                     
-                    System.out.println("Added");
+                    log.info("Added to panel");
                     
                     event.dropComplete(true);
                 }
@@ -61,7 +63,7 @@ public class DropListener extends DropTargetAdapter implements Constants {
             }
         } 
 		catch (Exception e) {
-            log.error("Error : ", e);
+            log.error ("Error : ", e);
             event.rejectDrop();
         }
     }

@@ -8,7 +8,6 @@ import java.awt.dnd.DragGestureListener;
 import java.io.IOException;
 
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class DragListener implements DragGestureListener {
@@ -16,7 +15,7 @@ public class DragListener implements DragGestureListener {
 	@Override
 	public void dragGestureRecognized(DragGestureEvent event) {
 		JLabel label = (JLabel) event.getComponent();
-		final ImageIcon ico = (ImageIcon) label.getIcon();
+		final Icon ico = label.getIcon();
 
 		Transferable transferable = new Transferable() {
 			@Override

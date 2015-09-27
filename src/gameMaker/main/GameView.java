@@ -1,11 +1,7 @@
 package gameMaker.main;
 
-import java.awt.Image;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
-import java.awt.image.BufferedImage;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -72,6 +68,10 @@ public class GameView {
 		};
 		
 		gamePanel.setTransferHandler(dragNDrop);
+	}
+	
+	public JPanel getGamePanel() {
+		return gamePanel;
 	}
 	
 }
