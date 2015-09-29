@@ -1,4 +1,4 @@
-package gameMaker.view;
+package com.gameMaker.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,7 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gameMaker.main.Overseer;
+import com.gameMaker.main.Overseer;
 
 public class AccordionUI extends JPanel implements ActionListener {
 

@@ -1,11 +1,7 @@
-package gameMaker.main;
+package com.gameMaker.main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import gameMaker.listener.DragListener;
-import gameMaker.util.Constants;
-import gameMaker.view.AccordionUI;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -21,6 +17,10 @@ import java.util.ArrayList;
 import javax.swing.border.TitledBorder;
 
 import org.apache.log4j.Logger;
+
+import com.gameMaker.listener.DragListener;
+import com.gameMaker.util.Constants;
+import com.gameMaker.view.AccordionUI;
 
 public class ControlView implements Constants {
 

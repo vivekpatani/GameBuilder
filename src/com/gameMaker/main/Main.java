@@ -1,14 +1,14 @@
 
-package gameMaker.main;
+package com.gameMaker.main;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import gameMaker.util.Constants;
-
 import org.apache.log4j.Logger;
+
+import com.gameMaker.util.Constants;
 
 public class Main implements Constants {
 

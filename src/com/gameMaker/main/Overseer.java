@@ -1,4 +1,4 @@
-package gameMaker.main;
+package com.gameMaker.main;
 
 import java.awt.BorderLayout;
 import java.io.File;
@@ -10,8 +10,8 @@ import javax.swing.JSplitPane;
 
 import org.apache.log4j.Logger;
 
-import gameMaker.listener.DropListener;
-import gameMaker.util.Constants;
+import com.gameMaker.listener.DropListener;
+import com.gameMaker.util.Constants;
 
 public class Overseer implements Constants {
 	

@@ -1,4 +1,4 @@
-package gameMaker.util;
+package com.gameMaker.util;
 
 public class ControlListener implements Constants {
 	

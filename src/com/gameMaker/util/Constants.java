@@ -1,4 +1,4 @@
-package gameMaker.util;
+package com.gameMaker.util;
 
 import java.awt.Rectangle;
 

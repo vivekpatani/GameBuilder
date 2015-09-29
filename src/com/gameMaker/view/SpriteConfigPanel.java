@@ -1,4 +1,4 @@
-package gameMaker.view;
+package com.gameMaker.view;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
-import gameMaker.listener.SpriteSelectionListener;
-import gameMaker.main.Overseer;
-import gameMaker.util.Constants;
+import com.gameMaker.listener.SpriteSelectionListener;
+import com.gameMaker.main.Overseer;
+import com.gameMaker.util.Constants;
 
 public class SpriteConfigPanel extends JPanel {
 

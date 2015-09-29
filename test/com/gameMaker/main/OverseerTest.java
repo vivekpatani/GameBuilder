@@ -1,10 +1,12 @@
-package gameMaker.main;
+package com.gameMaker.main;
 
 import javax.swing.JFrame;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.gameMaker.main.Overseer;
 
 public class OverseerTest {
 

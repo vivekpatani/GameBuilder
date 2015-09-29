@@ -1,4 +1,4 @@
-package gameMaker.util;
+package com.gameMaker.listener;
 
 import java.awt.Component;
 import java.awt.Point;
@@ -16,7 +16,8 @@ import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
 
-import gameMaker.main.ControlView;
+import com.gameMaker.main.ControlView;
+import com.gameMaker.util.Constants;
 
 public class DropListener extends DropTargetAdapter implements Constants {
 

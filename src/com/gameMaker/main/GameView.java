@@ -1,4 +1,4 @@
-package gameMaker.main;
+package com.gameMaker.main;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;

@@ -1,4 +1,4 @@
-package gameMaker.listener;
+package com.gameMaker.listener;
 
 import java.awt.Image;
 import java.awt.dnd.DnDConstants;
@@ -17,9 +17,9 @@ import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
 
-import gameMaker.main.ControlView;
-import gameMaker.main.Overseer;
-import gameMaker.util.Constants;
+import com.gameMaker.main.ControlView;
+import com.gameMaker.main.Overseer;
+import com.gameMaker.util.Constants;
 
 public class SpriteSelectionListener implements ActionListener {
 

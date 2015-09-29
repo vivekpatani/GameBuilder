@@ -1,4 +1,4 @@
-package gameMaker.main;
+package com.gameMaker.main;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.gameMaker.main.GameView;
+import com.gameMaker.main.Overseer;
 
 public class GameViewTest {
 
