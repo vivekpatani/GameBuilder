@@ -164,7 +164,7 @@ public class AccordionUI extends JPanel implements ActionListener {
 		this.addBar("Select Action", getDummyPanel("Three"));
 		this.addBar("Fix Configuration", getDummyPanel("Four"));
 		this.addBar("Five", getDummyPanel("Five"));
-		this.addBar("Six", getDummyPanel("Five"));
+		this.addBar("Background", new BackgroundConfigPanel(overseerObj));
 		this.setVisibleBar(2);
 
 	}

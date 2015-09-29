@@ -16,6 +16,7 @@ public interface Constants {
 	public static enum gameType {Breakout, Tetris}
 	public static final String[] gameTypeList = {"Please choose Game Layout", "Breakout", "Tetris"};
 	public static final String[] SPRITE_LIST = {"Please choose Sprite", "Ball", "Brick", "Paddle"};
+	public static final String[] BACKGROUND_LIST = {"Please choose Background", "dome", "green", "mountains","plain","skypale"};
 	public static final Rectangle gameTypeBounds = new Rectangle (75, 20, 150, 30);
 	public static final Rectangle DROPDOWN_DEFAULT_BOUNDS = new Rectangle (75, 20, 100, 30);
 	
