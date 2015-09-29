@@ -6,7 +6,7 @@ import javax.swing.*;
 import gameMaker.util.Constants;
 import gameMaker.util.DragListener;
 import gameMaker.view.AccordionUI;
-import gameMaker.view.SpritePanel;
+//import gameMaker.view.SpritePanel;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -32,7 +32,7 @@ public class ControlView implements Constants {
 	
 	private Overseer overseerObj;
 	
-	private SpritePanel spritePanel;
+	//private SpritePanel spritePanel;
 	private AccordionUI accordionUI;
 	
 	private JSplitPane splitControlView;
@@ -119,7 +119,7 @@ public class ControlView implements Constants {
 	public void initBreakoutAccordion() {
 
 		accordionUI = new AccordionUI();
-		spritePanel = new SpritePanel();
+		//spritePanel = new SpritePanel();
 		accordionUI.acordionMaker();
 		/*
 		JPanel addedSpritePanel = new JPanel(new BorderLayout());
