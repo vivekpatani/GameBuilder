@@ -18,7 +18,7 @@ public class Overseer implements Constants {
 	private final static Logger log = Logger.getLogger(Overseer.class);
 
 	private JFrame mainFrame;
-	private JPanel controlPanel, gamePanel;
+	private JPanel controlPanel;
 	private JSplitPane splitFrame;
 
 	private ControlView controlViewObj;
@@ -30,15 +30,13 @@ public class Overseer implements Constants {
 	// Constructor to initialize the mainFrame from main class
 	public Overseer(JFrame mainFrame) {
 		this.mainFrame = mainFrame;
+		gameViewObj = new GameView(this);
+		controlPanel = new JPanel();
 	}
 
 	public void init() {
 
-		controlPanel = new JPanel();
-		gamePanel = new JPanel();
-
 		controlPanel.setLayout(new BorderLayout());
-		gamePanel.setLayout(null);
 
 		// Name of the folder is initialized to saveFolder
 		resourceFolder = new File("resources");
@@ -46,18 +44,18 @@ public class Overseer implements Constants {
 		if (!resourceFolder.isDirectory()) {
 			log.error ("Resouce folder not found");
 		}
-
+		
 		// Splitting the mainFrame in two panels
-		splitFrame = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, controlPanel, gamePanel);
+		splitFrame = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, controlPanel, gameViewObj);
 		// Setting the resize to false
 		splitFrame.setEnabled(false);
 		// Setting the location of the divider
 		splitFrame.setDividerLocation(splitSize);
 
 		controlViewObj = new ControlView(this, controlPanel);
-		gameViewObj = new GameView(gamePanel);
+		
 
-		new DropListener(gamePanel);
+		new DropListener(gameViewObj);
 
 		mainFrame.getContentPane().add(splitFrame);
 	}
@@ -68,10 +66,6 @@ public class Overseer implements Constants {
 
 	public JPanel getControlPanel() {
 		return controlPanel;
-	}
-
-	public JPanel getGamePanel() {
-		return gamePanel;
 	}
 
 	public ControlView getControlView() {

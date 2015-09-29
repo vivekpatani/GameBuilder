@@ -1,5 +1,7 @@
 package com.gameMaker.main;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import javax.swing.ImageIcon;
@@ -10,21 +12,32 @@ import javax.swing.TransferHandler;
 
 import org.apache.log4j.Logger;
 
-public class GameView {
+import com.gameMaker.util.Constants;
 
-	private JPanel gamePanel;
-	
+public class GameView extends JPanel implements Constants {
+
 	private final static Logger log = Logger.getLogger(GameView.class);
 	
-	public GameView (JPanel gamePanel) {
-		this.gamePanel = gamePanel;
+	private Overseer overseerObj;
+	private Image backgroundImage;
+	
+	public GameView (Overseer overseerObj) {
+		this.overseerObj = overseerObj;
+		backgroundImage = null;
 		initDrop();
 	}
 	
-	public void addToPanel(JComponent component) {
-		gamePanel.add(component);
-		gamePanel.repaint();
-	}
+	@Override
+	public void paintComponent (Graphics g) {
+		super.paintComponent(g);
+		
+		if(backgroundImage != null) {
+			int size_x = this.getWidth();
+			int size_y = this.getHeight();
+			g.drawImage(backgroundImage, size_x, size_y, this);
+			
+		}
+	} 
 	
 	public void initDrop() {
 		TransferHandler dragNDrop = new TransferHandler() {
@@ -58,20 +71,29 @@ public class GameView {
 					log.error("Error : ", e);
 					return false;
 				}
-				
-				// Not needed, getting mousePosition in DropListener
-				// tempLabel.setBounds(100, 100, 100, 100);
-				
-				gamePanel.add(new JLabel (transferImage));
+						
+				addToPanel(new JLabel (transferImage));
 				return true;
 			}
 		};
 		
-		gamePanel.setTransferHandler(dragNDrop);
+		this.setTransferHandler(dragNDrop);
 	}
 	
+	// Used to add JComponents to this panel 
+	public void addToPanel(JComponent component) {
+		this.add(component);
+		this.repaint();
+	}
+	
+	// Returns the JPanel being used
 	public JPanel getGamePanel() {
-		return gamePanel;
+		return this;
 	}
 	
+	// Gives the backgroundImage an Image to be used as the GameView's background
+	public void changeBackground(Image bgImage) {
+		backgroundImage = bgImage;
+		repaint();
+	}
 }
