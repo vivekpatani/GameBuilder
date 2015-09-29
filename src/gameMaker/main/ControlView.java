@@ -3,10 +3,9 @@ package gameMaker.main;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import gameMaker.listener.DragListener;
 import gameMaker.util.Constants;
-import gameMaker.util.DragListener;
 import gameMaker.view.AccordionUI;
-//import gameMaker.view.SpritePanel;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -32,27 +31,16 @@ public class ControlView implements Constants {
 	
 	private Overseer overseerObj;
 	
-	//private SpritePanel spritePanel;
 	private AccordionUI accordionUI;
 	
 	private JSplitPane splitControlView;
 	private JPanel previewPanel;
-	private JButton loadAndSaveButton;
 	
 	// Everything under this needs to be removed later
 	private JLabel titleLabel;
 	private BufferedImage tempPic;
 	private JLabel picLabel;
 	
-	
-	public JButton getLoadAndSaveButton() {
-		return loadAndSaveButton;
-	}
-
-	public void setLoadAndSaveButton(JButton loadAndSaveButton) {
-		this.loadAndSaveButton = loadAndSaveButton;
-	}
-
 	public ControlView(Overseer overseerObj, JPanel controlPanel) {
 		this.overseerObj = overseerObj;
 		this.controlPanel = controlPanel;
@@ -62,8 +50,6 @@ public class ControlView implements Constants {
 	public void init() {
 		
 		//controlPanel.setBorder(new TitledBorder("Choose a Layout for the game"));
-		
-		loadAndSaveButton = new JButton("Load");
 		
 		gameTypeComboBox = new JComboBox <String>(gameTypeList);
 		gameTypeComboBox.setSelectedIndex(0);
@@ -85,6 +71,7 @@ public class ControlView implements Constants {
 				}
 				else if (gameTypeList[2].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Tetris selected");
+					
 				}
 				else {
 					log.warn("Nothing selected");
@@ -118,17 +105,12 @@ public class ControlView implements Constants {
 	
 	public void initBreakoutAccordion() {
 
-		accordionUI = new AccordionUI();
-		//spritePanel = new SpritePanel();
+		accordionUI = new AccordionUI(overseerObj);
 		accordionUI.acordionMaker();
-		/*
-		JPanel addedSpritePanel = new JPanel(new BorderLayout());
-		addedSpritePanel.add(new JLabel("Added Sprites"), BorderLayout.NORTH);
-		addedSpritePanel.add(new JScrollPane(), BorderLayout.CENTER);
-		*/
 
 		previewPanel = new JPanel();
-		previewPanel.add(addImage());
+		previewPanel.setLayout(new BorderLayout());
+		previewPanel.add(addImage(overseerObj.getResourceFolder(), "BreakoutTitle.jpg"));
 		previewPanel.setEnabled(true);
 		
 		// Splitting ControlView in two after ComboBox
@@ -145,11 +127,10 @@ public class ControlView implements Constants {
 	}
 	
 	// Temporary function to test drag and drop functionality
-	public JLabel addImage() {
+	public JLabel addImage(File resourceFolder, String fileName) {
 		
 		try {
-			tempPic = ImageIO.read(this.getClass().getResource("/BreakoutTitle.jpg")); 
-			//ImageIO.read(new File ("resources/BreakoutTitle.jpg"));
+			tempPic = ImageIO.read(new File (resourceFolder + "/" + fileName));
 			Image scaledImg = tempPic.getScaledInstance(splitSize, splitControlViewSize, Image.SCALE_SMOOTH);
 			
 			picLabel = new JLabel(new ImageIcon(scaledImg));
@@ -159,10 +140,11 @@ public class ControlView implements Constants {
 			log.error("Error : ", e);
 		}
 		
-		DragListener dragListener = new DragListener();
+		/*DragListener dragListener = new DragListener();
 		DragSource dragSource = new DragSource();
 		dragSource.createDefaultDragGestureRecognizer(picLabel, DnDConstants.ACTION_COPY, dragListener);
-		 // More can be added by making dragSource2 and adding object to it 
+		*/ 
+		// More can be added by making dragSource2 and adding object to it 
 		
 		return picLabel;
 	}
@@ -171,4 +153,14 @@ public class ControlView implements Constants {
 		return controlPanel;
 	}
 	
+	public JPanel getPreviewPanel() {
+		return previewPanel;
+	}
+	
+	public void addToPreviewPanel (JLabel picLabel) {
+		previewPanel.removeAll();
+		previewPanel.add(picLabel, BorderLayout.CENTER);
+		previewPanel.revalidate();
+		previewPanel.repaint();
+	}
 }

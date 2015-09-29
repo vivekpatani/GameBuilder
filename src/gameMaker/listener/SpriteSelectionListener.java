@@ -1,4 +1,4 @@
-package com.gameMaker.listener;
+package gameMaker.listener;
 
 import java.awt.Image;
 import java.awt.dnd.DnDConstants;
@@ -6,6 +6,7 @@ import java.awt.dnd.DragSource;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -14,16 +15,23 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
+
+import gameMaker.main.ControlView;
+import gameMaker.main.Overseer;
 import gameMaker.util.Constants;
-import gameMaker.util.DragListener;
 
 public class SpriteSelectionListener implements ActionListener {
 
+	private final static Logger log = Logger.getLogger(SpriteSelectionListener.class);
+	private Overseer overseerObj;
+	
 	private JPanel spritePanel;
 	private JLabel imageLabel;
 	
-	public SpriteSelectionListener(JPanel spritePanel) {
+	public SpriteSelectionListener(Overseer overseerObj, JPanel spritePanel) {
 		
+		this.overseerObj = overseerObj;
 		this.spritePanel = spritePanel;
 	}
 	@Override
@@ -33,7 +41,7 @@ public class SpriteSelectionListener implements ActionListener {
 		JComboBox <String> tempComboBox = (JComboBox <String >) event.getSource();
 		
 		if (Constants.SPRITE_LIST[0].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
-			//log.info("Default value of ComboBox");
+			log.info("Default value of ComboBox");
 			// To-do add a function call to disable accordionUI
 		}
 		else if (Constants.SPRITE_LIST[1].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
@@ -47,7 +55,7 @@ public class SpriteSelectionListener implements ActionListener {
 				if(null != imageLabel)	{
 				spritePanel.remove(imageLabel);
 				}
-				ballImage = ImageIO.read(this.getClass().getResource("/ball1.png"));
+				ballImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "ball1.png"));
 				Image scaledImg = ballImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				imageLabel = new JLabel(new ImageIcon(scaledImg));
 				imageLabel.setBounds(75, 50, 30, 30);
@@ -55,12 +63,17 @@ public class SpriteSelectionListener implements ActionListener {
 				DragListener dragListener = new DragListener();
 				DragSource dragSource = new DragSource();
 				dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);
+				
+				overseerObj.getControlView().addToPreviewPanel(imageLabel);
+				
+				/*
 				spritePanel.add(imageLabel);
 				spritePanel.revalidate();
+				*/
 				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+			catch (IOException e) {
+				log.error("Error : ", e);
 			}
 			
 			
@@ -78,7 +91,7 @@ public class SpriteSelectionListener implements ActionListener {
 					}
 				
 				spritePanel.revalidate();
-				ballImage = ImageIO.read(this.getClass().getResource("/brick1.jpg"));
+				ballImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "brick1.jpg"));
 				Image scaledImg = ballImage.getScaledInstance(50, 30, Image.SCALE_SMOOTH);
 				imageLabel = new JLabel(new ImageIcon(scaledImg));
 				imageLabel.setBounds(75, 50, 50, 30);
@@ -87,15 +100,18 @@ public class SpriteSelectionListener implements ActionListener {
 				
 				DragListener dragListener = new DragListener();
 				DragSource dragSource = new DragSource();
-				dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);
+				dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_MOVE, dragListener);
 				
+				overseerObj.getControlView().addToPreviewPanel(imageLabel);
+				
+				/*
 				spritePanel.add(imageLabel);
 				spritePanel.revalidate();
+				*/
 				
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} 
+			catch (IOException e) {
+				log.error("Error : ", e);
 			}
 			
 
@@ -112,7 +128,7 @@ public class SpriteSelectionListener implements ActionListener {
 					}
 				
 				spritePanel.revalidate();
-				ballImage = ImageIO.read(this.getClass().getResource("/paddle1.png"));
+				ballImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "paddle1.png"));
 				Image scaledImg = ballImage.getScaledInstance(100, 30, Image.SCALE_SMOOTH);
 				imageLabel = new JLabel(new ImageIcon(scaledImg));
 				imageLabel.setBounds(75, 50, 100, 30);
@@ -123,13 +139,15 @@ public class SpriteSelectionListener implements ActionListener {
 				DragSource dragSource = new DragSource();
 				dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);
 				
+				overseerObj.getControlView().addToPreviewPanel(imageLabel);
+				
+				/*
 				spritePanel.add(imageLabel);
 				spritePanel.revalidate();
-				
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				*/
+			} 
+			catch (IOException e) {
+				log.error("Error : ", e);
 			}
 			
 

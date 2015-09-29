@@ -17,10 +17,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gameMaker.main.Overseer;
+
 public class AccordionUI extends JPanel implements ActionListener {
 
 	private AccordionUI accordionUI;
 
+	private Overseer overseerObj;
+	
 	private JPanel topPanel = new JPanel(new GridLayout(2, 2));
 
 	private JPanel bottomPanel = new JPanel(new GridLayout(2, 2));
@@ -31,7 +35,8 @@ public class AccordionUI extends JPanel implements ActionListener {
 
 	private JComponent visibleComponent = null;
 
-	public AccordionUI() {
+	public AccordionUI(Overseer overseerObj) {
+		this.overseerObj = overseerObj; 
 		this.setLayout(new BorderLayout());
 		this.add(topPanel, BorderLayout.NORTH);
 		this.add(bottomPanel, BorderLayout.SOUTH);
@@ -154,7 +159,7 @@ public class AccordionUI extends JPanel implements ActionListener {
 	public void acordionMaker() {
 
 		//this.addBar("Sprite Selector", getDummyPanel("Onexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo"));
-		this.addBar("Sprite Selector", new SpriteConfigPanel());
+		this.addBar("Sprite Selector", new SpriteConfigPanel(overseerObj));
 		this.addBar("Choose Event", getDummyPanel("Two"));
 		this.addBar("Select Action", getDummyPanel("Three"));
 		this.addBar("Fix Configuration", getDummyPanel("Four"));
