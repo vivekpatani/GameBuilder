@@ -6,6 +6,7 @@ import javax.swing.*;
 import gameMaker.util.Constants;
 import gameMaker.util.DragListener;
 import gameMaker.view.AccordionUI;
+import gameMaker.view.SpritePanel;
 
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -31,17 +32,27 @@ public class ControlView implements Constants {
 	
 	private Overseer overseerObj;
 	
-	// private SpritePanel spritePanel;
+	private SpritePanel spritePanel;
 	private AccordionUI accordionUI;
 	
 	private JSplitPane splitControlView;
 	private JPanel previewPanel;
+	private JButton loadAndSaveButton;
 	
 	// Everything under this needs to be removed later
 	private JLabel titleLabel;
 	private BufferedImage tempPic;
 	private JLabel picLabel;
 	
+	
+	public JButton getLoadAndSaveButton() {
+		return loadAndSaveButton;
+	}
+
+	public void setLoadAndSaveButton(JButton loadAndSaveButton) {
+		this.loadAndSaveButton = loadAndSaveButton;
+	}
+
 	public ControlView(Overseer overseerObj, JPanel controlPanel) {
 		this.overseerObj = overseerObj;
 		this.controlPanel = controlPanel;
@@ -49,6 +60,10 @@ public class ControlView implements Constants {
 	}
 	
 	public void init() {
+		
+		//controlPanel.setBorder(new TitledBorder("Choose a Layout for the game"));
+		
+		loadAndSaveButton = new JButton("Load");
 		
 		gameTypeComboBox = new JComboBox <String>(gameTypeList);
 		gameTypeComboBox.setSelectedIndex(0);
@@ -61,18 +76,15 @@ public class ControlView implements Constants {
 				
 				if (gameTypeList[0].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Default value of ComboBox");
-					controlPanel.setBorder(new TitledBorder("Choose a Layout for the game"));
 					// To-do add a function call to disable accordionUI
 				}
 				else if (gameTypeList[1].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Breakout Game selected");
-					controlPanel.setBorder(new TitledBorder("Breakout Game"));
 					initBreakout();			
 					initBreakoutAccordion();
 				}
 				else if (gameTypeList[2].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Tetris selected");
-					controlPanel.setBorder(new TitledBorder("Tetris Game"));
 				}
 				else {
 					log.warn("Nothing selected");
@@ -92,25 +104,24 @@ public class ControlView implements Constants {
 		// To test sending object from controlView to GameView
 		// Remove later
 		titleLabel = new JLabel();
-		titleLabel.setText("Breakout");
-		titleLabel.setBounds((windowWidth-splitSize)/2, ySpace, 100, 50);
+		//titleLabel.setText("Breakout");
+		//titleLabel.setBounds((windowWidth-splitSize)/2, ySpace, 100, 50);
 		
-		componentList.add(titleLabel);
+		/*componentList.add(titleLabel);
 		
 		
 		for(JComponent tempComponent : componentList) {
 			overseerObj.addToGameView(tempComponent);
 		}
 		
-	}
+*/	}
 	
 	public void initBreakoutAccordion() {
 
 		accordionUI = new AccordionUI();
-		
+		spritePanel = new SpritePanel();
 		accordionUI.acordionMaker();
 		/*
-		spritePanel = new SpritePanel();
 		JPanel addedSpritePanel = new JPanel(new BorderLayout());
 		addedSpritePanel.add(new JLabel("Added Sprites"), BorderLayout.NORTH);
 		addedSpritePanel.add(new JScrollPane(), BorderLayout.CENTER);
@@ -137,7 +148,8 @@ public class ControlView implements Constants {
 	public JLabel addImage() {
 		
 		try {
-			tempPic = ImageIO.read(new File ("resources/BreakoutTitle.jpg"));
+			tempPic = ImageIO.read(this.getClass().getResource("/BreakoutTitle.jpg")); 
+			//ImageIO.read(new File ("resources/BreakoutTitle.jpg"));
 			Image scaledImg = tempPic.getScaledInstance(splitSize, splitControlViewSize, Image.SCALE_SMOOTH);
 			
 			picLabel = new JLabel(new ImageIcon(scaledImg));

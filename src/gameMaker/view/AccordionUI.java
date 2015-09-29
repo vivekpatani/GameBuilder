@@ -153,7 +153,8 @@ public class AccordionUI extends JPanel implements ActionListener {
 
 	public void acordionMaker() {
 
-		this.addBar("Sprite Selector", getDummyPanel("Onexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo"));
+		//this.addBar("Sprite Selector", getDummyPanel("Onexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo"));
+		this.addBar("Sprite Selector", new SpriteConfigPanel());
 		this.addBar("Choose Event", getDummyPanel("Two"));
 		this.addBar("Select Action", getDummyPanel("Three"));
 		this.addBar("Fix Configuration", getDummyPanel("Four"));

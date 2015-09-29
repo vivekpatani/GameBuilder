@@ -48,7 +48,7 @@ public class DropListener extends DropTargetAdapter implements Constants {
                 if (transferImage != null) {
                 	
                 	transferLabel = new JLabel(transferImage);
-                	transferLabel.setBounds((int) dropPoint.getX(), (int) dropPoint.getY(), splitSize, splitControlViewSize);
+                	transferLabel.setBounds((int) dropPoint.getX(), (int) dropPoint.getY(), transferImage.getIconWidth(), transferImage.getIconHeight());
                     panel.add(transferLabel);
                     panel.revalidate();
                     panel.repaint();
