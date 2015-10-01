@@ -38,8 +38,9 @@ public class KeyEventWrapper {
     
     public String getKeyString() {
     	String temp = KeyStroke.getKeyStroke(keyEvent.getKeyCode(), 0).toString();
-    	temp.replaceAll("released ", "");
-    	temp.replaceAll("pressed ", "");
+    	// Get the string after first space
+    	// This is done to get "A" from "pressed A" and "released A"
+    	temp = temp.substring(temp.indexOf(" ") + 1, temp.length());
     	return temp;
     }
     

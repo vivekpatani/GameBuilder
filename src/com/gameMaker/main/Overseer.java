@@ -70,7 +70,7 @@ public class Overseer implements Constants {
 		rightMoveKey = new KeyEventWrapper(new KeyEvent(controlPanel, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED));		
 		
 		// Remove Later
-		System.out.print("VK_LEFT is equal to keyCode from leftMoveKey: " + (KeyEvent.VK_LEFT == leftMoveKey.getKeyCode()));
+		System.out.println("VK_LEFT is equal to keyCode from leftMoveKey: " + (KeyEvent.VK_LEFT == leftMoveKey.getKeyCode()));
 		
 		mainFrame.getContentPane().add(splitFrame);
 	}

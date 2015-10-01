@@ -53,8 +53,10 @@ public class ChooseControlsDialog extends JDialog {
 				// To-do Use enum to define a mode
 				// GameControl.MOUSE;
 				
-				leftButton.setEnabled(false);
-				rightButton.setEnabled(false);
+				leftButton.setVisible(false);
+				rightButton.setVisible(false);
+				leftKeyBindingLabel.setVisible(false);
+				rightKeyBindingLabel.setVisible(false);
 				
 				dialogBoxPanel.repaint();
 				// send image to keyImage in gamePanel
@@ -64,14 +66,17 @@ public class ChooseControlsDialog extends JDialog {
 		ActionListener keyboardRadioButtonListener = new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				
-				leftButton.setEnabled(true);
-				rightButton.setEnabled(true);
+				leftButton.setVisible(true);
+				rightButton.setVisible(true);
+				leftKeyBindingLabel.setVisible(true);
+				rightKeyBindingLabel.setVisible(true);
+				
 				dialogBoxPanel.repaint();
 				
 				final KeyListener leftKeyListener = new KeyAdapter() {
 					public void keyReleased(KeyEvent ke) {
-						KeyStroke ks = KeyStroke.getKeyStrokeForEvent(ke);
-						leftKeyBindingLabel.setText("" + ks.toString());
+						leftKey = new KeyEventWrapper(ke);
+						leftKeyBindingLabel.setText(leftKey.getKeyString());
 						leftButton.removeKeyListener(this);
 						
 						dialogBoxPanel.revalidate();
@@ -81,8 +86,8 @@ public class ChooseControlsDialog extends JDialog {
 				
 				final KeyListener rightKeyListener = new KeyAdapter() {
 					public void keyReleased(KeyEvent ke) {
-						KeyStroke ks = KeyStroke.getKeyStroke(ke.getKeyCode(), ke.getModifiers());
-						rightKeyBindingLabel.setText("" + ks.toString());
+						rightKey = new KeyEventWrapper(ke);
+						rightKeyBindingLabel.setText(rightKey.getKeyString());
 						rightButton.removeKeyListener(this);
 						
 						dialogBoxPanel.revalidate();
@@ -93,7 +98,7 @@ public class ChooseControlsDialog extends JDialog {
 				ActionListener leftButtonListener = new ActionListener() {
 					public void actionPerformed(ActionEvent ae) {
 						leftButton.addKeyListener(leftKeyListener);
-						leftKeyBindingLabel.setText("Please enter a key for left move");
+						leftKeyBindingLabel.setText("Please enter a key");
 						dialogBoxPanel.revalidate();
 						dialogBoxPanel.repaint();
 					}
@@ -102,7 +107,7 @@ public class ChooseControlsDialog extends JDialog {
 				ActionListener rightButtonListener = new ActionListener() {
 					public void actionPerformed(ActionEvent ae) {
 						rightButton.addKeyListener(rightKeyListener);
-						rightKeyBindingLabel.setText("Please enter a key for right move");
+						rightKeyBindingLabel.setText("Please enter a key");
 						dialogBoxPanel.revalidate();
 						dialogBoxPanel.repaint();
 					}
@@ -116,6 +121,10 @@ public class ChooseControlsDialog extends JDialog {
 
 		mouseRadioButton.addActionListener(mouseRadioButtonListener);
 		keyboardRadioButton.addActionListener(keyboardRadioButtonListener);
+		leftButton.setVisible(false);
+		rightButton.setVisible(false);
+		leftKeyBindingLabel.setVisible(false);
+		rightKeyBindingLabel.setVisible(false);
 		
 		buttonGroup.add(mouseRadioButton);
 		buttonGroup.add(keyboardRadioButton);
