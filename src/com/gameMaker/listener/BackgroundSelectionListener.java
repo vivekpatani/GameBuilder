@@ -56,13 +56,7 @@ public void actionPerformed(ActionEvent event){
 				backgroundPanel.remove(imageLabel);
 			}
 			backgroundImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "dome.jpg"));
-			Image scaledImg = backgroundImage.getScaledInstance(170, 140, Image.SCALE_SMOOTH);
-			imageLabel = new JLabel(new ImageIcon(scaledImg));
-			imageLabel.setBounds(55, 50, 170, 140);
-			DragListener dragListener = new DragListener();
-			DragSource dragSource = new DragSource();
-			dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);	
-			overseerObj.getControlView().addToPreviewPanel(imageLabel);
+			overseerObj.getGameView().changeBackground(backgroundImage);
 			
 		} 
 		catch (IOException e) {
@@ -80,13 +74,7 @@ public void actionPerformed(ActionEvent event){
 				backgroundPanel.remove(imageLabel);
 			}
 			backgroundImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "green.jpg"));
-			Image scaledImg = backgroundImage.getScaledInstance(170, 140, Image.SCALE_SMOOTH);
-			imageLabel = new JLabel(new ImageIcon(scaledImg));
-			imageLabel.setBounds(55, 50, 170, 140);
-			DragListener dragListener = new DragListener();
-			DragSource dragSource = new DragSource();
-			dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);	
-			overseerObj.getControlView().addToPreviewPanel(imageLabel);
+			overseerObj.getGameView().changeBackground(backgroundImage);
 			
 		} 
 		catch (IOException e) {
@@ -104,13 +92,7 @@ public void actionPerformed(ActionEvent event){
 				backgroundPanel.remove(imageLabel);
 			}
 			backgroundImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "mountains.jpg"));
-			Image scaledImg = backgroundImage.getScaledInstance(170, 140, Image.SCALE_SMOOTH);
-			imageLabel = new JLabel(new ImageIcon(scaledImg));
-			imageLabel.setBounds(55, 50, 170, 140);
-			DragListener dragListener = new DragListener();
-			DragSource dragSource = new DragSource();
-			dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);	
-			overseerObj.getControlView().addToPreviewPanel(imageLabel);
+			overseerObj.getGameView().changeBackground(backgroundImage);
 			
 		} 
 		catch (IOException e) {
@@ -128,13 +110,7 @@ public void actionPerformed(ActionEvent event){
 				backgroundPanel.remove(imageLabel);
 			}
 			backgroundImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "plain.jpg"));
-			Image scaledImg = backgroundImage.getScaledInstance(170, 140, Image.SCALE_SMOOTH);
-			imageLabel = new JLabel(new ImageIcon(scaledImg));
-			imageLabel.setBounds(55, 50, 170, 140);
-			DragListener dragListener = new DragListener();
-			DragSource dragSource = new DragSource();
-			dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);	
-			overseerObj.getControlView().addToPreviewPanel(imageLabel);
+			overseerObj.getGameView().changeBackground(backgroundImage);
 			
 		} 
 		catch (IOException e) {
@@ -152,13 +128,7 @@ public void actionPerformed(ActionEvent event){
 				backgroundPanel.remove(imageLabel);
 			}
 			backgroundImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "skypale.jpg"));
-			Image scaledImg = backgroundImage.getScaledInstance(170, 140, Image.SCALE_SMOOTH);
-			imageLabel = new JLabel(new ImageIcon(scaledImg));
-			imageLabel.setBounds(55, 50, 170, 140);
-			DragListener dragListener = new DragListener();
-			DragSource dragSource = new DragSource();
-			dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);	
-			overseerObj.getControlView().addToPreviewPanel(imageLabel);
+			overseerObj.getGameView().changeBackground(backgroundImage);
 			
 		} 
 		catch (IOException e) {
