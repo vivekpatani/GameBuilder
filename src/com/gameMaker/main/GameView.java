@@ -24,17 +24,19 @@ public class GameView extends JPanel implements Constants {
 	public GameView (Overseer overseerObj) {
 		this.overseerObj = overseerObj;
 		backgroundImage = null;
+		this.setLayout(null);
 		initDrop();
 	}
 	
 	@Override
 	public void paintComponent (Graphics g) {
 		super.paintComponent(g);
-		
+	
 		if(backgroundImage != null) {
+			
 			int size_x = this.getWidth();
 			int size_y = this.getHeight();
-			g.drawImage(backgroundImage, size_x, size_y, this);
+			g.drawImage(backgroundImage, 0, 0, size_x, size_y, this);
 			
 		}
 	} 

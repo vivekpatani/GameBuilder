@@ -1,17 +1,20 @@
 package com.gameMaker.main;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.KeyStroke;
 
 import org.apache.log4j.Logger;
 
 import com.gameMaker.listener.DropListener;
 import com.gameMaker.util.Constants;
+import com.gameMaker.util.KeyEventWrapper;
 
 public class Overseer implements Constants {
 	
@@ -23,6 +26,8 @@ public class Overseer implements Constants {
 
 	private ControlView controlViewObj;
 	private GameView gameViewObj;
+	
+	private KeyEventWrapper leftMoveKey, rightMoveKey;
 
 	// Default folder for resource files
 	public static File resourceFolder;
@@ -56,12 +61,23 @@ public class Overseer implements Constants {
 		
 
 		new DropListener(gameViewObj);
+		/*
+		leftMoveKey = (KeyEvent.class.getDeclaredField("VK_LEFT"));
+		rightMoveKey = null;
+		*/
 
+		leftMoveKey = new KeyEventWrapper(new KeyEvent(controlPanel, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED));
+		rightMoveKey = new KeyEventWrapper(new KeyEvent(controlPanel, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED));		
+		
+		// Remove Later
+		System.out.print("VK_LEFT is equal to keyCode from leftMoveKey: " + (KeyEvent.VK_LEFT == leftMoveKey.getKeyCode()));
+		
 		mainFrame.getContentPane().add(splitFrame);
 	}
 
 	public JFrame getMainFrame() {
 		return mainFrame;
+		
 	}
 
 	public JPanel getControlPanel() {
@@ -84,4 +100,19 @@ public class Overseer implements Constants {
 		return resourceFolder;
 	}
 	
+	public void setLeftMoveKey(KeyEventWrapper leftKey) {
+		leftMoveKey = leftKey;
+	}
+	
+	public KeyEventWrapper getLeftMoveKey() {
+		return leftMoveKey;
+	}
+	
+	public void setRightMoveKey(KeyEventWrapper rightKey) {
+		rightMoveKey = rightKey;
+	}
+	
+	public KeyEventWrapper getRightMoveKey() {
+		return rightMoveKey;
+	}
 }
