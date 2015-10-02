@@ -1,12 +1,7 @@
 package com.gameMaker.main;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
 import java.awt.BorderLayout;
 import java.awt.Image;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DragSource;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -14,11 +9,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.border.TitledBorder;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 import org.apache.log4j.Logger;
 
-import com.gameMaker.listener.DragListener;
 import com.gameMaker.util.Constants;
 import com.gameMaker.view.AccordionUI;
 
@@ -161,9 +161,9 @@ public class ControlView implements Constants {
 		return previewPanel;
 	}
 	
-	public void addToPreviewPanel (JLabel picLabel) {
+	public void addToPreviewPanel (JComponent compLabel) {
 		previewPanel.removeAll();
-		previewPanel.add(picLabel, BorderLayout.CENTER);
+		previewPanel.add(compLabel, BorderLayout.CENTER);
 		previewPanel.revalidate();
 		previewPanel.repaint();
 	}
