@@ -1,9 +1,7 @@
 package com.gameMaker.view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
@@ -11,13 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.swing.Icon;
-import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.gameMaker.main.Overseer;
+import com.gameMaker.util.BarInfo;
 
 public class AccordionUI extends JPanel implements ActionListener {
 
@@ -170,44 +167,6 @@ public class AccordionUI extends JPanel implements ActionListener {
 		this.addBar("Five", getDummyPanel("Five"));
 		this.addBar("Background", new BackgroundConfigPanel(overseerObj));
 		this.setVisibleBar(0);
-
-	}
-
-	class BarInfo {
-
-		private String name;
-
-		private JButton button;
-
-		private JComponent component;
-
-		public BarInfo(String name, JComponent component) {
-			this.name = name;
-			this.component = component;
-			this.button = new JButton(name);
-		}
-
-		public BarInfo(String name, Icon icon, JComponent component) {
-			this.name = name;
-			this.component = component;
-			this.button = new JButton(name, icon);
-		}
-
-		public String getName() {
-			return this.name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public JButton getButton() {
-			return this.button;
-		}
-
-		public JComponent getComponent() {
-			return this.component;
-		}
 
 	}
 
