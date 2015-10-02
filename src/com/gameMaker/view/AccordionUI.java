@@ -25,17 +25,22 @@ public class AccordionUI extends JPanel implements ActionListener {
 
 	private Overseer overseerObj;
 	
-	private JPanel topPanel = new JPanel(new GridLayout(2, 2));
+	private JPanel topPanel, bottomPanel;
 
-	private JPanel bottomPanel = new JPanel(new GridLayout(2, 2));
+	private Map<String, BarInfo> bars;
 
-	private Map<String, BarInfo> bars = new LinkedHashMap<String, BarInfo>();
+	private int visibleBar;
 
-	private int visibleBar = 0;
-
-	private JComponent visibleComponent = null;
+	private JComponent visibleComponent;
 
 	public AccordionUI(Overseer overseerObj) {
+		
+		topPanel = new JPanel(new GridLayout(2, 2));
+		bottomPanel = new JPanel(new GridLayout(2, 2));
+		bars = new LinkedHashMap<String, BarInfo>();
+		visibleBar = 0;
+		visibleComponent = null;
+		
 		this.overseerObj = overseerObj; 
 		this.setLayout(new BorderLayout());
 		this.add(topPanel, BorderLayout.NORTH);
