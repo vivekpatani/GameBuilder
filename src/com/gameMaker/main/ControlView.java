@@ -62,7 +62,9 @@ public class ControlView implements Constants {
 				
 				if (gameTypeList[0].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Default value of ComboBox");
-					// To-do add a function call to disable accordionUI
+					// Removes Breakout accordion
+					controlPanel.remove(splitControlView);
+					controlPanel.repaint();
 				}
 				else if (gameTypeList[1].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Breakout Game selected");
@@ -71,7 +73,9 @@ public class ControlView implements Constants {
 				}
 				else if (gameTypeList[2].equalsIgnoreCase((String) tempComboBox.getSelectedItem())) {
 					log.info("Tetris selected");
-					
+					// Removes Breakout accordion
+					controlPanel.remove(splitControlView);
+					controlPanel.repaint();
 				}
 				else {
 					log.warn("Nothing selected");
