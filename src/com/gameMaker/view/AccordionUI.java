@@ -18,7 +18,7 @@ import com.gameMaker.util.BarInfo;
 
 public class AccordionUI extends JPanel implements ActionListener {
 
-	private AccordionUI accordionUI;
+	//private AccordionUI accordionUI;
 
 	private Overseer overseerObj;
 	
@@ -171,6 +171,10 @@ public class AccordionUI extends JPanel implements ActionListener {
 	}
 
 	public JPanel getAccordionUI() {
-		return accordionUI;
+		return this;
+	}
+	
+	public Map<String, BarInfo> getBarsObj() {
+		return bars;
 	}
 }
