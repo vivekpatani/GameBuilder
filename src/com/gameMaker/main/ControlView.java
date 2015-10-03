@@ -1,6 +1,7 @@
 package com.gameMaker.main;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,6 +165,13 @@ public class ControlView implements Constants {
 	public void addToPreviewPanel (JComponent compLabel) {
 		previewPanel.removeAll();
 		previewPanel.add(compLabel, BorderLayout.CENTER);
+		previewPanel.revalidate();
+		previewPanel.repaint();
+	}
+	
+	public void addToPreviewPanel (Object object) {
+		previewPanel.removeAll();
+		previewPanel.add((Component) object, BorderLayout.CENTER);
 		previewPanel.revalidate();
 		previewPanel.repaint();
 	}

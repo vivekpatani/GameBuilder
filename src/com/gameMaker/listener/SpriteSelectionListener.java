@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
 
+import com.gameMaker.components.InputReceiver;
 import com.gameMaker.main.ControlView;
 import com.gameMaker.main.Overseer;
 import com.gameMaker.util.Constants;
@@ -50,13 +51,16 @@ public class SpriteSelectionListener implements ActionListener {
 			 */
 			
 			BufferedImage ballImage;
-			try {
+			//try {
+				InputReceiver ir = new InputReceiver(spritePanel);
+		        ir.ball();
+		        
 				
-				if(null != imageLabel)	{
+				/*if(null != imageLabel)	{
 				spritePanel.remove(imageLabel);
 				}
 				ballImage = ImageIO.read(new File (overseerObj.getResourceFolder() + "/" + "ball1.png"));
-				Image scaledImg = ballImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+				//Image scaledImg = ballImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 				imageLabel = new JLabel(new ImageIcon(scaledImg));
 				imageLabel.setBounds(75, 50, 30, 30);
 				//spritePanel.add(imageLabel, 111);
@@ -64,17 +68,16 @@ public class SpriteSelectionListener implements ActionListener {
 				DragSource dragSource = new DragSource();
 				dragSource.createDefaultDragGestureRecognizer(imageLabel, DnDConstants.ACTION_COPY, dragListener);
 				
-				overseerObj.getControlView().addToPreviewPanel(imageLabel);
+				overseerObj.getControlView().addToPreviewPanel(imageLabel);*/
 				
 				/*
 				spritePanel.add(imageLabel);
 				spritePanel.revalidate();
 				*/
 				
-			} 
-			catch (IOException e) {
+			/*} catch (IOException e) {
 				log.error("Error : ", e);
-			}
+			}*/
 			
 			
 		}

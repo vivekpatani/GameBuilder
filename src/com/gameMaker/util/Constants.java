@@ -21,4 +21,12 @@ public interface Constants {
 	public static final Rectangle DROPDOWN_DEFAULT_BOUNDS = new Rectangle (75, 20, 100, 30);
 	
 	public static final int ySpace = 50;
+	
+	static final int PADDLE_X_START = 50;
+	static final int PADDLE_Y_START = 100;
+	
+	static final String FRAME_TITLE = "Game Builder 0.9: Living in Beta";
+	static final int FRAME_WIDTH = 800;
+	static final int FRAME_HEIGHT = 800;
+	static final String INPUT_MESSAGE_BALL = "Submit Ball Coordinates";
 }
