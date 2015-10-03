@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.gameMaker.main.Overseer;
 import com.gameMaker.util.Constants;
 
 /**
@@ -26,6 +27,14 @@ public class InputReceiver implements Constants{
     private JButton paddlesizeInput, brickSizeInput;
     private Graphics mainBoard;
 	private static JPanel panel;
+	
+	private JPanel ballPanel;
+	private JTextField inputBallW;
+	private JTextField inputBallH;
+	private JButton ballSizeInput;
+	private Ball b;
+	
+	private Overseer overseerObj;
 	/**
 	 * 
 	 */
@@ -36,21 +45,20 @@ public class InputReceiver implements Constants{
 	/**
 	 * @param panel
 	 */
-	public InputReceiver(JPanel panel) {
+	public InputReceiver(JPanel panel, Overseer overseerObj) {
 		super();
 		this.panel = panel;
+		
+		this.overseerObj = overseerObj;
 	}
 
 
-	public static final void ball(){
+	public void ball(){
 		System.out.println("Enteres into ball ");
-		JButton ballSizeInput = new JButton(INPUT_MESSAGE_BALL);
+		ballSizeInput = new JButton(INPUT_MESSAGE_BALL);
 		
 		
-		JPanel ballPanel = new JPanel();
-		
-		JTextField inputBallW, inputBallH;
-		
+		ballPanel = new JPanel();
 		inputBallW = new JTextField (10);
         inputBallH = new JTextField (10);
       
@@ -78,15 +86,21 @@ public class InputReceiver implements Constants{
             	//panel.add(ballOutput);
             	System.out.println("Lets make love:"+ inputIntW);
             	System.out.println("Lets make love:"+ inputIntH);
-    	        Ball b = new Ball(250, 250, inputIntW, inputIntH, Color.white);
-            	b.draw(ballPanel.getGraphics());
-                inputBallW.setVisible(false);
-                inputBallH.setVisible(false);
+            	
+            	// The problem was your initial cordinates were 250,250..that wouldn't fit the spritePanel
+    	        b = new Ball(50, 50, inputIntW, inputIntH, Color.RED);
+    	        // You were using spritePanel here, to print it there
+    	        b.draw(ballPanel.getGraphics());
+    	        
+    	        // To print it on previewPanel you need overseerObj access
+    	        b.draw(overseerObj.getControlView().getPreviewPanel().getGraphics());
+
+                // inputBallW.setVisible(false);
+                // inputBallH.setVisible(false);
+                // ballSizeInput.setVisible(false);
             	}
             }
         });
-
-		
 	}
 
 

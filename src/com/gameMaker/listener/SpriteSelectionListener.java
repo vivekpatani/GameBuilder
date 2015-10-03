@@ -52,8 +52,11 @@ public class SpriteSelectionListener implements ActionListener {
 			
 			BufferedImage ballImage;
 			//try {
-				InputReceiver ir = new InputReceiver(spritePanel);
+				InputReceiver ir = new InputReceiver(spritePanel, overseerObj);
 		        ir.ball();
+		        spritePanel.revalidate();
+		        spritePanel.repaint();
+		        
 		        
 				
 				/*if(null != imageLabel)	{

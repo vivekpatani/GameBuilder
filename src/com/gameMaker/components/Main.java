@@ -38,8 +38,8 @@ public class Main implements Constants{
 	        frame.setTitle(FRAME_TITLE);
 //	        label.setVisible(false);
 	        frame.add(panel);
-	        InputReceiver ir = new InputReceiver(panel);
-	        ir.ball();
+	        //InputReceiver ir = new InputReceiver(panel);
+	        //ir.ball();
 	        // panel.add(label);
 	        panel.setVisible(true);
 	        frame.setVisible(true);

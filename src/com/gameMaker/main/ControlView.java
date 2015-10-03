@@ -175,4 +175,9 @@ public class ControlView implements Constants {
 		previewPanel.revalidate();
 		previewPanel.repaint();
 	}
+	
+	public void resetPreviewPanel() {
+		previewPanel.removeAll();
+		previewPanel.repaint();
+	}
 }
