@@ -115,7 +115,8 @@ public class GameMakerPanel extends JPanel {
 		spritePanel = new JPanel();
 		imagePanel = new JPanel();
 		setPreferredSize(new Dimension(Constants.GAME_MAKER_PANEL_WIDTH, Constants.GAME_MAKER_PANEL_HEIGHT));
-		setLayout(new GridLayout(6, 0));
+		//setLayout(new GridLayout(6, 0));
+		//setLayout(null);
 		props = loadConfigProperties();
 		eventPanel = new JScrollPane();
 		frameWallPanel = new JPanel();
@@ -214,14 +215,14 @@ public class GameMakerPanel extends JPanel {
 	private void populateBackgroundPanel(JPanel backgroundPanel) {
 		backgroundPanel.setBorder(BorderFactory.createTitledBorder(Constants.BACKGROUND_PANEL));
 		backgroundPanel.setBackground(Constants.defaultColor);
-		backgroundPanel.setLayout(gridBagLayout);
+		//backgroundPanel.setLayout(gridBagLayout);
 
-		backgroundPanel.add(backgroundSelectLabel, setGridBagConstraints(0, 0));
-		backgroundPanel.add(backgroundImageComboBox, setGridBagConstraints(1, 0));
+		backgroundPanel.add(backgroundSelectLabel);
+		backgroundPanel.add(backgroundImageComboBox);
 		backgroundImageComboBox.setToolTipText("Select a background image");
 
-		backgroundPanel.add(addClockLabel, setGridBagConstraints(0, 1));
-		backgroundPanel.add(addClockCheckbox, setGridBagConstraints(1, 1));
+		backgroundPanel.add(addClockLabel);
+		backgroundPanel.add(addClockCheckbox);
 		addClockCheckbox.setToolTipText("Select to enable clock for the game");
 	}
 
@@ -272,18 +273,18 @@ public class GameMakerPanel extends JPanel {
 	 */
 	private void populateSpritePanel(JPanel spritePanel) {
 
-		spritePanel.setLayout(gridBagLayout);
+		//spritePanel.setLayout(gridBagLayout);
 		spritePanel.setBorder(BorderFactory.createTitledBorder(Constants.SPRITE_PANEL));
 		spritePanel.setBackground(Constants.defaultColor);
-		spritePanel.add(spriteNameLabel, setGridBagConstraints(0, 0));
-		spritePanel.add(spriteNameTextField, setGridBagConstraints(1, 0));
+		spritePanel.add(spriteNameLabel);
+		spritePanel.add(spriteNameTextField);
 		spriteNameTextField.setToolTipText("enter name for sprite");
 		
-		spritePanel.add(xPosition, setGridBagConstraints(0, 1));
-		spritePanel.add(xPositionTextField, setGridBagConstraints(1, 1));
+		spritePanel.add(xPosition);
+		spritePanel.add(xPositionTextField);
 		xPositionTextField.setToolTipText("enter X Co-ordinate for sprite");
-		spritePanel.add(yPosition, setGridBagConstraints(0, 2));
-		spritePanel.add(yPositionTextField, setGridBagConstraints(1, 2));
+		spritePanel.add(yPosition);
+		spritePanel.add(yPositionTextField);
 		yPositionTextField.setToolTipText("enter Y Co-ordinate for sprite");
 	}
 
@@ -296,15 +297,15 @@ public class GameMakerPanel extends JPanel {
 	private void populateImagePanel(JPanel imagePanel) {
 
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(gridBagLayout);
+		//buttonPanel.setLayout(gridBagLayout);
 		buttonPanel.setBackground(Constants.defaultColor);
 
-		imagePanel.setLayout(new GridLayout(0, 1));
+		//imagePanel.setLayout(new GridLayout(0, 1));
 		imagePanel.setBorder(BorderFactory.createTitledBorder(Constants.IMAGE_PANEL));
 		imagePanel.setBackground(Constants.defaultColor);
 
 		JPanel tmpImagePanel = new JPanel();
-		tmpImagePanel.setLayout(new FlowLayout());
+		//tmpImagePanel.setLayout(new FlowLayout());
 		tmpImagePanel.setToolTipText("Choose a sprite from the list of options");
 		for (int j = 0; j < imageStrings.length; j++) {
 			ImageIcon imageIcon = new ImageIcon(
@@ -329,8 +330,8 @@ public class GameMakerPanel extends JPanel {
 		imageScrollPane.setPreferredSize(new Dimension(400, 80));
 		tmpImagePanel.setBackground(new Color(180, 220, 152));
 		imagePanel.add(imageScrollPane);
-		buttonPanel.add(createSpriteButton, setGridBagConstraints(0, 0));
-		buttonPanel.add(deleteSpriteButton, setGridBagConstraints(1, 0));
+		buttonPanel.add(createSpriteButton);
+		buttonPanel.add(deleteSpriteButton);
 		deleteSpriteButton.setEnabled(false);
 		imagePanel.add(buttonPanel);
 
@@ -348,26 +349,26 @@ public class GameMakerPanel extends JPanel {
 		eventPanel.setBorder(BorderFactory.createTitledBorder(Constants.EVENT_PANEL));
 		eventPanel.setBackground(Constants.defaultColor);
 		innerEventPanel.setBackground(Constants.defaultColor);
-		innerEventPanel.setLayout(gridBagLayout);
+		//innerEventPanel.setLayout(gridBagLayout);
 		attachButton.setEnabled(false);
 
-		innerEventPanel.add(createdSprites, setGridBagConstraints(0, 0));
-		innerEventPanel.add(createdSpriteComboBox, setGridBagConstraints(1, 0));
+		innerEventPanel.add(createdSprites);
+		innerEventPanel.add(createdSpriteComboBox);
 		createdSpriteComboBox.setToolTipText("Pick a sprite");
 
-		innerEventPanel.add(eventTypeLabel, setGridBagConstraints(0, 1));
-		innerEventPanel.add(eventTypeComboBox, setGridBagConstraints(1, 1));
+		innerEventPanel.add(eventTypeLabel);
+		innerEventPanel.add(eventTypeComboBox);
 		eventTypeComboBox.setToolTipText("Pick an event and then pick an action");
 		
-		innerEventPanel.add(actionTypeLabel, setGridBagConstraints(2, 0));
-		innerEventPanel.add(actionList, setGridBagConstraints(3, 0));
+		innerEventPanel.add(actionTypeLabel);
+		innerEventPanel.add(actionList);
 		actionList.setToolTipText("Pick an action");
 		
-		innerEventPanel.add(soundLabel, setGridBagConstraints(2, 1));
-		innerEventPanel.add(soundComboBox, setGridBagConstraints(3, 1));
+		innerEventPanel.add(soundLabel);
+		innerEventPanel.add(soundComboBox);
 		soundComboBox.setToolTipText("Select a sound");
 
-		innerEventPanel.add(attachButton, setGridBagConstraints(1, 4));
+		innerEventPanel.add(attachButton);
 		eventPanel.setViewportView(innerEventPanel);
 		// adds ToolTip for the JList of objects 
 		actionList.addMouseMotionListener(new MouseMotionListener() {
@@ -450,7 +451,7 @@ public class GameMakerPanel extends JPanel {
 	 * @param activityPanel
 	 */
 	private void populateControlPanel(JPanel activityPanel) {
-		activityPanel.setLayout(gridBagLayout);
+		//activityPanel.setLayout(gridBagLayout);
 		activityPanel.setBorder(BorderFactory.createTitledBorder(Constants.CONTROL_PANEL));
 		activityPanel.setBackground(Constants.defaultColor);
 
@@ -474,11 +475,11 @@ public class GameMakerPanel extends JPanel {
 
 		playButton.setEnabled(false);
 
-		activityPanel.add(saveButton, setGridBagConstraints(0, 0));
-		activityPanel.add(loadButton, setGridBagConstraints(1, 0));
-		activityPanel.add(playButton, setGridBagConstraints(2, 0));
+		activityPanel.add(saveButton);
+		activityPanel.add(loadButton);
+		activityPanel.add(playButton);
 
-		activityPanel.add(lastAutoSaveLabel, setGridBagConstraints(1, 1));
+		activityPanel.add(lastAutoSaveLabel);
 	}
 
 	/**
